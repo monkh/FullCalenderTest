@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section csslib {
+    @Styles.Render("~/bundles/calendarstyles")
+}
+
+@section scriptslib {
+    @*@Scripts.Render("~/bundles/calendarscripts")*@
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src='~/Scripts/Calendar/moment.min.js'></script>
+    <script src="~/Scripts/Calendar/fullcalendar.min.js"></script>
+    <script src='~/Scripts/Calendar/scheduler.min.js'></script>
+}
+<div id="box">
+    <h2>Calendar View</h2>
+
+    <div id="calendar"></div>
+
+    <script>
+        $(function () {
+
+            // page is now ready, initialize the calendar...
+
+            $('#calendar').fullCalendar({
+                selectable: true,
+                header: {
+                    left: 'today prev,next',
+                    center: 'title',
+                    right: 'timelineDay,timelineWeek'
+                },
+                defaultView: 'timelineDay',
+                resourceGroupField: 'building',
+                resources: [
+                    { id: 'a', building: 'Engineer Type A', title: 'Bob Smith' },
+                    { id: 'b', building: 'Engineer Type A', title: 'John Jones' },
+                    { id: 'c', building: 'Engineer Type A', title: 'Sandra Bullock' },
+                    { id: 'd', building: 'Engineer Type A', title: 'Donald Trump' },
+                    { id: 'e', building: 'Engineer Type A', title: 'Tony Blair' },
+                    { id: 'f', building: 'Engineer Type A', title: 'Vladimir Putin' },
+                    { id: 'g', building: 'Engineer Type A', title: 'Sarah James' },
+                    { id: 'h', building: 'Engineer Type B', title: 'Bonny Homes' },
+                    { id: 'i', building: 'Engineer Type B', title: 'Clyde Von Dame' },
+                    { id: 'j', building: 'Engineer Type B', title: 'Steve Jobs' },
+                    { id: 'k', building: 'Engineer Type B', title: 'Bill Gates' },
+                    { id: 'l', building: 'Engineer Type B', title: 'Shane Smith' },
+                    { id: 'm', building: 'Engineer Type B', title: 'asdasd' },
+                    { id: 'n', building: 'Engineer Type B', title: 'asdasd' },
+                    { id: 'o', building: 'Engineer Type C', title: 'asfafsasf' },
+                    { id: 'p', building: 'Engineer Type C', title: 'wrhwrgsdf' },
+                    { id: 'q', building: 'Engineer Type C', title: 'erhedffds' },
+                    { id: 'r', building: 'Engineer Type C', title: 'rtjefegfgd' },
+                    { id: 's', building: 'Engineer Type C', title: 'tjsfvsdsd' },
+                    { id: 't', building: 'Engineer Type C', title: 'hwsdsdcesrfd' },
+                    { id: 'u', building: 'Engineer Type C', title: 'rhwsdcvwresg' },
+                    { id: 'v', building: 'Engineer Type C', title: 'jatreatfgbgf' },
+                    { id: 'w', building: 'Engineer Type C', title: 'ysrjsbnfgdbf' },
+                    { id: 'x', building: 'Engineer Type C', title: 'xbvczxbvcgetu' },
+                    { id: 'y', building: 'Engineer Type C', title: 'xaqxsaqxqsqsx' },
+                    { id: 'z', building: 'Engineer Type C', title: 'vmbnxbvcxcvhb' }
+                ],
+                dayClick: function (date, jsEvent, view, resource) {
+                    alert('clicked ' + date.format() + ' on resource ' + resource.id);
+                },
+                select: function (startDate, endDate, jsEvent, view, resource) {
+                    alert('selected ' + startDate.format() + ' to ' + endDate.format() + ' on ' + resource.title);
+                }
+            });
+        });
+    </script>
+
+</div>

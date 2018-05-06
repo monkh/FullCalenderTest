@@ -34,6 +34,11 @@
                 },
                 defaultView: 'timelineDay',
                 resourceGroupField: 'building',
+                businessHours: {
+                    dow: [1, 2, 3, 4],
+                    start: '09:00',
+                    end: '18:00'
+                },
                 resources: [
                     { id: 'a', building: 'Engineer Type A', title: 'Bob Smith' },
                     { id: 'b', building: 'Engineer Type A', title: 'John Jones' },
@@ -62,12 +67,34 @@
                     { id: 'y', building: 'Engineer Type C', title: 'xaqxsaqxqsqsx' },
                     { id: 'z', building: 'Engineer Type C', title: 'vmbnxbvcxcvhb' }
                 ],
+                events: [
+                    {
+                        id: '1',
+                        resourceId: 'a',
+                        title: 'event1',
+                        start: '2018-05-01'
+                    },
+                    {
+                        id: '2',
+                        resourceId: 'b',
+                        title: 'event2',
+                        start: '2018-05-05',
+                        end: '2018-05-07'
+                    },
+                    {
+                        id: '3',
+                        resourceId: 'c',
+                        title: 'event3',
+                        start: '2018-05-09T12:30:00',
+                        allDay: false // will make the time show
+                    }
+                ],
                 dayClick: function (date, jsEvent, view, resource) {
                     alert('clicked ' + date.format() + ' on resource ' + resource.id);
                 },
                 select: function (startDate, endDate, jsEvent, view, resource) {
                     alert('selected ' + startDate.format() + ' to ' + endDate.format() + ' on ' + resource.title);
-                }
+                },
             });
         });
     </script>

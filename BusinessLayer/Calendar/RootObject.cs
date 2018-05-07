@@ -8,7 +8,8 @@ namespace BusinessLayer.Calendar
 {
     public class RootObject
     {
-        // properties need to have camelCasing
+// Supressed name style warnings because object serialized 
+#pragma warning disable IDE1006 // Naming Styles
         public bool selectable { get; set; }
         public Header header { get; set; }
         public string defaultView { get; set; }
@@ -16,5 +17,6 @@ namespace BusinessLayer.Calendar
         public BusinessHours businessHours { get; set; }
         public List<Resource> resources { get; set; }
         public List<Event> events { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     }
 }
